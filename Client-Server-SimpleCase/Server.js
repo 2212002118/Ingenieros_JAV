@@ -1,5 +1,6 @@
 const soap = require('soap');
 const express= require('express');
+const IP = '0.0.0.0'; // Poner IP servidor
 
 const app = express();
 const PORT = 3000;                                      //Puerto para usarse
@@ -72,7 +73,7 @@ transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
 </binding>
 <service name="CalculatorService">
 <port name="CalculatorPort" binding="tns:CalculatorBinding">
-<soap12:address location="http://192.168.137.1:3000/calculator"/>
+<soap12:address location="http://${IP}:3000/calculator"/>
 </port>
 </service>
 </definitions>
@@ -80,7 +81,7 @@ transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
 
 app.listen(PORT, ()=>{
     soap.listen(app, '/calculator', service, wsdl);
-    console.log('Servicio SOAP corriendo en http://192.168.137.1:3000/calculator');
+    console.log('Servicio SOAP corriendo en http://${IP}:3000/calculator');
 });
 
 

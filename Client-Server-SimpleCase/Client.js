@@ -1,6 +1,8 @@
 const soap = require('soap');
 
-const url = 'http://192.168.137.1:3000/calculator?wsdl';
+const IP = '0.0.0.0'; // Poner IP servidor
+const url = `http://${IP}:3000/calculator?wsdl`;
+
 
 const requestArgs = {
     intA: 5, intB: 10
