@@ -1,0 +1,16 @@
+{
+  "name": "ingenieros_jav",
+  "version": "1.0.0",
+  "description": "UEA Programación Orientada a Servicios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "soap": "^1.1.6"
+  }
+}

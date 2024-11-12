@@ -21,12 +21,12 @@ const service =  {                                      //Creacion de un servici
     }
 };
 
-const wsdlPath=path.join(_dirname,'requeriments.wsdl');
+const wsdlPath=path.join(__dirname,'requirements.wsdl');
 const wsdl= fs.readFileSync(wsdlPath, 'utf8');
 
 app.listen(PORT, ()=>{
     soap.listen(app, '/calculator', service, wsdl);
-    console.log('Servicio SOAP corriendo en http://localhost:3000/calculator');
+    console.log('Servicio SOAP corriendo en http://localhost/calculator'); //Poner id del servidor
 });
 
 
