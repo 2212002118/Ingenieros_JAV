@@ -16,6 +16,24 @@ const service =  {                                      //Creacion de un servici
                 const intB = args.intB;                 //Arriba x2
                 const result=intA+intB;                 //Lo que hace el servicio
                 callback(null, {AddResult: result});    //Regresa null si esta vacio, en caso contrario el resultado del servicio
+            },
+            Multiplication: function(args, callback){              
+                const intA = args.intA;                 
+                const intB = args.intB;                 
+                const result=intA*intB;                 
+                callback(null, {MultiplicationResult: result});    
+            },
+            Division: function(args, callback){              
+                const intA = args.intA;               
+                const intB = args.intB;                
+                const result=intA / intB;                 
+                callback(null, {DivisionResult: result});    
+            },
+            Power: function(args, callback){              
+                const intA = args.intA;                
+                const intB = args.intB;                 
+                const result=Math.pow(intA,intB);                 
+                callback(null, {PowerResult: result});    
             }
         }
     }

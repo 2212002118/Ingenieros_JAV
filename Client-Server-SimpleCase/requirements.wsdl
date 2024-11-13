@@ -4,54 +4,177 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema"
 xmlns:tns="http://www.example.org/calculator"
 name="CalculatorService"
 targetNamespace="http://www.example.org/calculator">
-<types>
-<xs:schema targetNamespace="http://www.example.org/calculator">
-<xs:element name="Add">
-<xs:complexType>
-<xs:sequence>
-<xs:element name="intA" type="xs:int"/>
-<xs:element name="intB" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-</xs:element>
-<xs:element name="AddResponse">
-<xs:complexType>
-<xs:sequence>
-<xs:element name="AddResult" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-</xs:element>
-</xs:schema>
-</types>
-<message name="AddRequest">
-<part name="parameters" element="tns:Add"/>
-</message>
 
-<message name="AddResponse">
-<part name="parameters" element="tns:AddResponse"/>
-</message>
-<portType name="CalculatorPortType">
-<operation name="Add">
-<input message="tns:AddRequest"/>
-<output message="tns:AddResponse"/>
-</operation>
-</portType>
-<binding name="CalculatorBinding" type="tns:CalculatorPortType">
-<soap12:binding style="rpc"
-transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
-<operation name="Add">
-<soap12:operation soapAction="http://www.example.org/calculator/Add"/>
-<input>
-<soap12:body use="literal"/>
-</input>
-<output>
-<soap12:body use="literal"/>
-</output>
-</operation>
-</binding>
-<service name="CalculatorService">
-<port name="CalculatorPort" binding="tns:CalculatorBinding">
-<soap12:address location="http://localhost:3000/calculator"/>
-</port>
-</service>
+    <types>
+        <xs:schema targetNamespace="http://www.example.org/calculator">
+
+            <!-- Suma potencia-respueta-->
+            <xs:element name="Add">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="intA" type="xs:int"/>
+                        <xs:element name="intB" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="AddResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <!-- Multiplicación potencia-respueta-->
+            <xs:element name="Multiplication">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="intA" type="xs:int"/>
+                        <xs:element name="intB" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MultiplicationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="MultiplicationResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <!-- Division potencia-respueta-->
+            <xs:element name="Division">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="intA" type="xs:int"/>
+                        <xs:element name="intB" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="DivisionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="DivisionResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+
+            <!-- Potencia potencia-respueta-->
+            <xs:element name="Power">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="intA" type="xs:int"/>
+                        <xs:element name="intB" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PowerResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="PowerResult" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+
+    <!-- Porque esta ahi?-->
+    <message name="AddRequest">
+        <part name="parameters" element="tns:Add"/>
+    </message>
+    <message name="AddResponse">
+        <part name="parameters" element="tns:AddResponse"/>
+    </message>
+
+    <!-- No c-->
+    <message name="MultiplicationRequest">
+        <part name="parameters" element="tns:Multiplication"/>
+    </message>
+    <message name="MultiplicationResponse">
+        <part name="parameters" element="tns:MultiplicationResponse"/>
+    </message>
+
+    <!-- No c-->
+    <message name="DivisionRequest">
+        <part name="parameters" element="tns:Division"/>
+    </message>
+    <message name="DivisionResponse">
+        <part name="parameters" element="tns:DivisionResponse"/>
+    </message>
+
+    <!-- No c-->
+    <message name="PowerRequest">
+        <part name="parameters" element="tns:Power"/>
+    </message>
+    <message name="PowerResponse">
+        <part name="parameters" element="tns:PowerResponse"/>
+    </message>
+
+    <portType name="CalculatorPortType">
+        <operation name="Add">
+            <input message="tns:AddRequest"/>
+            <output message="tns:AddResponse"/>
+        </operation>
+        <operation name="Multiplication">
+            <input message="tns:MultiplicationRequest"/>
+            <output message="tns:MultiplicationResponse"/>
+        </operation>
+        <operation name="Division">
+            <input message="tns:DivisionRequest"/>
+            <output message="tns:DivisionResponse"/>
+        </operation>
+        <operation name="Power">
+            <input message="tns:PowerRequest"/>
+            <output message="tns:PowerResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="CalculatorBinding" type="tns:CalculatorPortType">
+        <soap12:binding style="rpc"
+        transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
+        <operation name="Add">
+            <soap12:operation soapAction="http://www.example.org/calculator/Add"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Multiplication">
+            <soap12:operation soapAction="http://www.example.org/calculator/Multiply"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Division">
+            <soap12:operation soapAction="http://www.example.org/calculator/Divide"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="Power">
+            <soap12:operation soapAction="http://www.example.org/calculator/Power"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="CalculatorService">
+        <port name="CalculatorPort" binding="tns:CalculatorBinding">
+            <!-- Cambiar localhost por el IP correcto-->
+            <soap12:address location="http://localhost:3000/calculator"/>
+        </port>
+    </service>
+
 </definitions>
