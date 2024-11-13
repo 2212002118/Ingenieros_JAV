@@ -35,19 +35,19 @@ soap.createClient(url, (err, client)=>{
         
         client.Multiplication(args, (err, result) => {
             if (err) throw err;
-            console.log("Resultado de la multiplicación:", result.MulResult);
+            console.log("Resultado de la multiplicación:", result.MultiplicationResult);
             rl.close();
         });
         
         client.Division(args, (err, result) => {
             if (err) throw err;
-            console.log("Resultado de la división:", result.DivResult);
+            console.log("Resultado de la división:", result.DivisionResult);
             rl.close();
         });
         
         client.Power(args, (err, result) => {
             if (err) throw err;
-            console.log("Resultado de la potencia:", result.SubResult);
+            console.log("Resultado de la potencia:", result.PowerResult);
             rl.close();
         });
     }); //Gets imput
