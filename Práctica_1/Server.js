@@ -25,9 +25,17 @@ const service =  {                                      //Creacion de un servici
             },
             Division: function(args, callback){              
                 const intA = args.intA;               
-                const intB = args.intB;                
-                const result=intA / intB;                 
-                callback(null, {DivisionResult: result});    
+                const intB = args.intB;   
+                //veremos que el denominador intB no sea igual a cero
+                if(intB == 0){
+                    //enviaremos un mensaje de error usando
+                    callback({faultcode: 'SOAP-ENV:Server',
+                        faultstring: 'Error: División por cero no permitida.'});
+                    //callback({ faultString: 'Error: División por cero no permitida' });    
+                }else{             
+                    const result=intA / intB;                 
+                    callback(null, {DivisionResult: result}); 
+                }   
             },
             Power: function(args, callback){              
                 const intA = args.intA;                

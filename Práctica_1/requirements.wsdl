@@ -8,7 +8,7 @@ targetNamespace="http://www.example.org/calculator">
     <types>
         <xs:schema targetNamespace="http://www.example.org/calculator">
 
-            <!-- Suma potencia-respueta-->
+            <!-- Suma peticion-respueta-->
             <xs:element name="Add">
                 <xs:complexType>
                     <xs:sequence>
@@ -25,7 +25,7 @@ targetNamespace="http://www.example.org/calculator">
                 </xs:complexType>
             </xs:element>
 
-            <!-- Multiplicación potencia-respueta-->
+            <!-- Multiplicación peticion-respueta-->
             <xs:element name="Multiplication">
                 <xs:complexType>
                     <xs:sequence>
@@ -42,7 +42,7 @@ targetNamespace="http://www.example.org/calculator">
                 </xs:complexType>
             </xs:element>
 
-            <!-- Division potencia-respueta-->
+            <!-- Division peticion-respueta-->
             <xs:element name="Division">
                 <xs:complexType>
                     <xs:sequence>
@@ -59,7 +59,7 @@ targetNamespace="http://www.example.org/calculator">
                 </xs:complexType>
             </xs:element>
 
-            <!-- Potencia potencia-respueta-->
+            <!-- Potencia peticion-respueta-->
             <xs:element name="Power">
                 <xs:complexType>
                     <xs:sequence>
@@ -78,7 +78,8 @@ targetNamespace="http://www.example.org/calculator">
         </xs:schema>
     </types>
 
-    <!-- Porque esta ahi?-->
+    <!-- Mensajes para cada solicitud de operacion una soliictu y una respuesta -->
+    <!-- Caso para suma-->
     <message name="AddRequest">
         <part name="parameters" element="tns:Add"/>
     </message>
@@ -86,7 +87,7 @@ targetNamespace="http://www.example.org/calculator">
         <part name="parameters" element="tns:AddResponse"/>
     </message>
 
-    <!-- No c-->
+    <!-- Caso para multiplicacion-->
     <message name="MultiplicationRequest">
         <part name="parameters" element="tns:Multiplication"/>
     </message>
@@ -94,7 +95,7 @@ targetNamespace="http://www.example.org/calculator">
         <part name="parameters" element="tns:MultiplicationResponse"/>
     </message>
 
-    <!-- No c-->
+    <!-- Caso para division-->
     <message name="DivisionRequest">
         <part name="parameters" element="tns:Division"/>
     </message>
@@ -102,7 +103,7 @@ targetNamespace="http://www.example.org/calculator">
         <part name="parameters" element="tns:DivisionResponse"/>
     </message>
 
-    <!-- No c-->
+    <!-- Caso para potencia-->
     <message name="PowerRequest">
         <part name="parameters" element="tns:Power"/>
     </message>
@@ -110,6 +111,7 @@ targetNamespace="http://www.example.org/calculator">
         <part name="parameters" element="tns:PowerResponse"/>
     </message>
 
+    <!-- Se definen la operaciones .... -->
     <portType name="CalculatorPortType">
         <operation name="Add">
             <input message="tns:AddRequest"/>
@@ -129,6 +131,7 @@ targetNamespace="http://www.example.org/calculator">
         </operation>
     </portType>
 
+    <!-- Se incluye una descrpcion para cada operacion  -->
     <binding name="CalculatorBinding" type="tns:CalculatorPortType">
         <soap12:binding style="rpc"
         transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
@@ -170,6 +173,7 @@ targetNamespace="http://www.example.org/calculator">
         </operation>
     </binding>
 
+    <!-- Se mostrar el URL del servicio calculadora asociada al puerto 3000 -->
     <service name="CalculatorService">
         <port name="CalculatorPort" binding="tns:CalculatorBinding">
             <!-- Cambiar localhost por el IP correcto-->
