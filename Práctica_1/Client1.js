@@ -1,7 +1,7 @@
 const soap = require('soap');
 
-const IP = 'localhost'; // Poner IP servidor
-const url = `http://${IP}:3000/calculator?wsdl`;
+const IP = '192.168.0.255'; // Poner IP servidor
+const url = `http://192.168.0.255:3000/calculator?wsdl`;
 
 
 //Necesario para lectura y escritura

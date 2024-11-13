@@ -52,7 +52,7 @@ const wsdl= fs.readFileSync(wsdlPath, 'utf8');
 
 app.listen(PORT, ()=>{
     soap.listen(app, '/calculator', service, wsdl);
-    console.log('Servicio SOAP corriendo en http://localhost/calculator'); //Poner id del servidor
+    console.log('Servicio SOAP corriendo en http://192.168.137.196/calculator'); //Poner id del servidor
 });
 
 
