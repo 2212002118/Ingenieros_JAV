@@ -1,0 +1,65 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:tns="http://www.example.org/contactlist"
+name="ContactList"
+targetNamespace="http://www.example.org/contactlist">
+    <types>
+        <xs:schema targetNamespace="http://www.example.org/contactlist">
+            <xs:element name="Add">
+                <xs:complexType>
+                    <xs:element name="stringA" type="xs:string"/>
+                    <xs:element name="stringB" type="xs:string"/>
+                    <xs:element name="stringC" type="xs:string"/>
+                    <xs:element name="stringD" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="AddResponse">
+                <xs:complexType>
+                    <xs:element name="stringA" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </types>
+
+    <!-- Mensajes para cada solicitud de operacion una soliictu y una respuesta -->
+    <!-- Caso para agregar-->
+    <message name="AddRequest">
+        <part name="parameters" element="tns:Add"/>
+    </message>
+    <message name="AddResponse">
+        <part name="parameters" element="tns:AddResponse"/>
+    </message>
+
+    <portype name="ContactListPort">
+        <operation name="Add">
+            <input message="tns:AddRequest"/>
+            <output message="tns:AddResponse"/>
+        </operation>
+    </portype>
+
+    <binding name="ContactListBinding" type="tns:ContactListPortType">
+        <soap12:binding style="rpc"
+        transport="http://www.w3.org/2003/05/soap/bindings/HTTP/"/>
+        
+            <operation name="Add">
+                <soap12:operation soapAction="http://www.example.org/contactlist/Add"/>
+                <input>
+                    <soap12:body use="literal"/>
+                </input>
+                <output>
+                    <soap12:body use="literal"/>
+                </output>
+            </operation>
+        <soap12:binding />
+    </binding>
+
+    <!-- Se mostrar el URL del servicio calculadora asociada al puerto 3000 -->
+    <service name="ContactListService">
+        <port name="ContactListPort" binding="tns:ContactListBinding">
+            <!-- Cambiar localhost por el IP correcto-->
+            <soap12:address location="http://localhost:3000/contactlist"/>
+        </port>
+    </service>
+
+</definitions>
