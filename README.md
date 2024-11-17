@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/2212002118/Ingenieros_JAV">
-    <img src="imagenes/logo.png" alt="Logo" width="80" height="80">
+    <img src="imagenes/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Ingenieros JAV</h3>
