@@ -1,4 +1,4 @@
-// Server.js - Modificado
+//Constantes a utilizar
 const soap = require('soap');
 const express = require('express');
 const fs = require('fs');
@@ -6,7 +6,8 @@ const path = require("path");
 const csvParse = require('csv-parse/sync');
 const csvStringify = require('csv-stringify/sync');
 const app = express();
-const PORT = 3000;
+const PORT = '3000';
+const IP = 'localhost';
 
 // Leer el archivo CSV
 function leerCSV() {
@@ -33,20 +34,25 @@ function escribirCSV(data) {
 const service = {
     DirectorioService: {
         DirectorioPort: {
+            //Servicio para añadir a directorio.csv, se lee el directorio y al final se agrega el nuevo contacto.
             Añadir: function (args, callback) {
+                //Se leen los contactos
                 const fileCSV = leerCSV();
+                //Se crea el nuevo contacto
                 const nuevoContacto = {
                     nombre: args.nombre,
                     telefono: args.telefono,
                     celular: args.celular,
                     correo: args.correo,
                 };
-
+                //Se agrega el contacto nuevo
                 fileCSV.push(nuevoContacto);
+                //Se escribe el archivo CSV con los contactos
                 escribirCSV(fileCSV);
-
+                //Regresa mensaje de exito
                 callback(null, { AñadirResult: `Se añadió el contacto: ${args.nombre}` });
             },
+            //Servicio para buscar los datos del contacto por nombre
             Buscar: function (args, callback) {
                 const fileCSV = leerCSV();
                 const contacto = fileCSV.find(row => row.nombre === args.nombre);
@@ -57,6 +63,7 @@ const service = {
                     callback(null, { BuscarResult: `No se encontró ningún registro con el nombre: ${args.nombre}` });
                 }
             },
+            //Servicio para eliminar el contacto por nombre
             Eliminar: function (args, callback) {
                 const fileCSV = leerCSV();
                 const index = fileCSV.findIndex(row => row.nombre === args.nombre);
@@ -68,20 +75,20 @@ const service = {
                     callback(null, { EliminarResult: `No se encontró ningún registro con el nombre: ${args.nombre}` });
                 }
             },
+            //Servicio que ordena por orden alfabetico los contactos, por nombre
             OrdenarAlfabetico: function (args, callback) {
                 try {
                     const data = leerCSV();            
                     // Ordenar por nombre
                     data.sort((a, b) => a.nombre.localeCompare(b.nombre));
-            
                     // Escribir los datos ordenados
                     escribirCSV(data);
-            
                     callback(null, { OrdenarAlfabeticoResult: 'El directorio ha sido ordenado alfabéticamente.' });
                 } catch (err) {
                     callback(err);
                 }
             },
+            //Servicio que ordena por orden alfabetico los contactos, por dominio de correo electronico
             OrdenarAlfabeticoCorreo: function (args, callback) {
                 try {
                     let data = leerCSV();
@@ -109,5 +116,5 @@ const wsdl = fs.readFileSync(wsdlPath, 'utf8');
 
 app.listen(PORT, () => {
     soap.listen(app, '/directorio', service, wsdl);
-    console.log('Servicio SOAP corriendo en http://localhost:3000/directorio');
+    console.log(`Servicio SOAP corriendo en http://${IP}:${PORT}/directorio`);
 });

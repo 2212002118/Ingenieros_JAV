@@ -1,10 +1,9 @@
+//Constantes a utilizar
 const soap = require('soap');
 const readline = require('readline');
-
 const IP="localhost";
 const PORT="3000";
 const url = `http://${IP}:${PORT}/directorio?wsdl`;
-
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -68,25 +67,29 @@ function imprimirDirectorio() {
 }
 
 //Funcion para llamar a Servidor y ordenar por orden alfabetico
-function ordenarAlfabetico(){
+function ordenarAlfabetico(client){
     client.OrdenarAlfabetico({}, (err, result) => {
         if (err) {
             console.error("Error al invocar OrdenarAlfabetico:", err.message || err);
         } else {
             console.log(result.OrdenarAlfabeticoResult);
             imprimirDirectorio();
+            showMenu();
+            return;
         }
     });
 }
 
 //Funcion para llamar a Servidor y ordenar por correo electronico y en orden alfabetico
-function ordenarAlfabeticoCorreo(){
+function ordenarAlfabeticoCorreo(client){
     client.OrdenarAlfabeticoCorreo({}, (err, result) => {
         if (err) {
             console.error("Error al invocar OrdenarAlfabeticoCorreo:", err.message || err);
         } else {
             console.log(result.OrdenarAlfabeticoCorreoResult);
             imprimirDirectorio(); // Mostrar directorio ordenado
+            showMenu();
+            return;
         }
     });
 }
@@ -140,12 +143,12 @@ soap.createClient(url, (err, client) => {
                 showOrderBy((ordenamiento) => {
                     switch (ordenamiento) {
                         case '1': // Ordenar alfabéticamente
-                            ordenarAlfabetico();
-                            preguntarOpcion(); // Volver al menú tras completar la operación
+                            ordenarAlfabetico(client);
+                            preguntarOpcion();
                             break;
                         case '2': // Ordenar por dominio de correo
-                            ordenarAlfabeticoCorreo();
-                            preguntarOpcion(); // Volver al menú
+                            ordenarAlfabeticoCorreo(client);
+                            preguntarOpcion();
                             break;
                         default:
                             console.log('Opción no válida.');
