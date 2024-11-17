@@ -11,12 +11,11 @@
   <h3 align="center">Ingenieros JAV</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
     <br />
-    <a><strong>Práctica 1 »</strong></a>
+    <a><strong>Práctica 1</strong></a>
     <br />
     <br />
-    <a><strong>Práctica 2 »</strong></a>
+    <a><strong>Práctica 2</strong></a>
     <br />
     <br />
   </p>
