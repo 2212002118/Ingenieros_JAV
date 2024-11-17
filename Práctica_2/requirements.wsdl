@@ -1,110 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+<definitions name="DirectorioService"
+             targetNamespace="http://localhost:3000/directorio/wsdl"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-             xmlns:tns="http://localhost:3000/directorio"
-             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-             targetNamespace="http://localhost:3000/directorio"
-             name="DirectorioService">
+             xmlns:tns="http://localhost:3000/directorio/wsdl"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-    <!-- Tipos de datos -->
-    <types>
-        <xsd:schema targetNamespace="http://localhost:3000/directorio">
-            <xsd:element name="AñadirRequest">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="nombre" type="xs:string"/>
-                        <xsd:element name="telefono" type="xs:string"/>
-                        <xsd:element name="celular" type="xs:string"/>
-                        <xsd:element name="correo" type="xs:string"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="AñadirResponse">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="AñadirResult" type="xs:string"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-
-            <xsd:element name="BuscarRequest">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="nombre" type="xs:string"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="BuscarResponse">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="BuscarResult" type="xs:string"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-
-            <xsd:element name="EliminarRequest">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="nombre" type="xs:string"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-            <xsd:element name="EliminarResponse">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="EliminarResult" type="xs:string"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-
-            <xsd:element name="OrdenarAlfabeticoResponse">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="OrdenarAlfabeticoResult" type="xs:string"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-
-            <xsd:element name="OrdenarAlfabeticoCorreoResponse">
-                <xsd:complexType>
-                    <xsd:sequence>
-                        <xsd:element name="OrdenarAlfabeticoCorreoResult" type="xs:string"/>
-                    </xsd:sequence>
-                </xsd:complexType>
-            </xsd:element>
-        </xsd:schema>
-    </types>
-
-    <!-- Mensajes -->
     <message name="AñadirRequest">
-        <part name="parameters" element="tns:AñadirRequest"/>
+        <part name="nombre" type="xsd:string"/>
+        <part name="telefono" type="xsd:string"/>
+        <part name="celular" type="xsd:string"/>
+        <part name="correo" type="xsd:string"/>
     </message>
     <message name="AñadirResponse">
-        <part name="parameters" element="tns:AñadirResponse"/>
+        <part name="AñadirResult" type="xsd:string"/>
     </message>
 
     <message name="BuscarRequest">
-        <part name="parameters" element="tns:BuscarRequest"/>
+        <part name="nombre" type="xsd:string"/>
     </message>
     <message name="BuscarResponse">
-        <part name="parameters" element="tns:BuscarResponse"/>
+        <part name="BuscarResult" type="xsd:string"/>
     </message>
 
     <message name="EliminarRequest">
-        <part name="parameters" element="tns:EliminarRequest"/>
+        <part name="nombre" type="xsd:string"/>
     </message>
     <message name="EliminarResponse">
-        <part name="parameters" element="tns:EliminarResponse"/>
+        <part name="EliminarResult" type="xsd:string"/>
     </message>
 
+    <message name="OrdenarAlfabeticoRequest">
+        <part name="dummy" type="xsd:string"/>
+    </message>
     <message name="OrdenarAlfabeticoResponse">
-        <part name="parameters" element="tns:OrdenarAlfabeticoResponse"/>
+        <part name="OrdenarAlfabeticoResult" type="xsd:string"/>
+    </message>
+
+    <message name="OrdenarAlfabeticoCorreoRequest">
+        <part name="dummy" type="xsd:string"/>
     </message>
     <message name="OrdenarAlfabeticoCorreoResponse">
-        <part name="parameters" element="tns:OrdenarAlfabeticoCorreoResponse"/>
+        <part name="OrdenarAlfabeticoCorreoResult" type="xsd:string"/>
     </message>
 
-    <!-- PortType -->
     <portType name="DirectorioPortType">
         <operation name="Añadir">
             <input message="tns:AñadirRequest"/>
@@ -119,16 +58,17 @@
             <output message="tns:EliminarResponse"/>
         </operation>
         <operation name="OrdenarAlfabetico">
+            <input message="tns:OrdenarAlfabeticoRequest"/>
             <output message="tns:OrdenarAlfabeticoResponse"/>
         </operation>
         <operation name="OrdenarAlfabeticoCorreo">
+            <input message="tns:OrdenarAlfabeticoCorreoRequest"/>
             <output message="tns:OrdenarAlfabeticoCorreoResponse"/>
         </operation>
     </portType>
 
-    <!-- Binding -->
     <binding name="DirectorioBinding" type="tns:DirectorioPortType">
-        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <operation name="Añadir">
             <soap:operation soapAction="Añadir"/>
             <input>
@@ -158,19 +98,24 @@
         </operation>
         <operation name="OrdenarAlfabetico">
             <soap:operation soapAction="OrdenarAlfabetico"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
             <output>
                 <soap:body use="literal"/>
             </output>
         </operation>
         <operation name="OrdenarAlfabeticoCorreo">
             <soap:operation soapAction="OrdenarAlfabeticoCorreo"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
             <output>
                 <soap:body use="literal"/>
             </output>
         </operation>
     </binding>
 
-    <!-- Service -->
     <service name="DirectorioService">
         <port name="DirectorioPort" binding="tns:DirectorioBinding">
             <soap:address location="http://localhost:3000/directorio"/>

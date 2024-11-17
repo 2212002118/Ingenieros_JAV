@@ -1,7 +1,9 @@
+// Client.js - Modificado
 const soap = require('soap');
 const readline = require('readline');
 
 const url = `http://localhost:3000/directorio?wsdl`;
+
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -30,13 +32,36 @@ function getContactInputs(callback) {
     });
 }
 
-function showOrderBy(callback){
-    console.log('1. Ordenar por orden alfabetico');
-    console.log('2. Ordenar por orden alfabetico y por correo');
-    rl.question('Seleccionar una opcion:', (ordenamiento)=>{
-        callback(ordenamiento)
+function showOrderBy(callback) {
+    console.log('1. Ordenar por orden alfabético');
+    console.log('2. Ordenar por orden alfabético y por correo');
+    rl.question('Seleccionar una opción:', (ordenamiento) => {
+        callback(ordenamiento);
     });
-};
+}
+
+function leerCSV() {
+    const fs = require('fs');
+    const csvParse = require('csv-parse/sync');
+
+    try {
+        const fileContent = fs.readFileSync('./directorio.csv', 'utf-8');
+        return csvParse.parse(fileContent, { columns: true });
+    } catch (err) {
+        console.error("Error al leer el CSV:", err);
+        return [];
+    }
+}
+
+function imprimirDirectorio() {
+    const contactos = leerCSV(); // Ya es un arreglo de objetos
+    contactos.forEach(contacto => {
+        console.log(`Nombre: ${contacto.nombre}`);
+        console.log(`\tTeléfono: ${contacto.telefono}`);
+        console.log(`\tCelular: ${contacto.celular}`);
+        console.log(`\tCorreo: ${contacto.correo}`);
+    });
+}
 
 // Cliente SOAP
 soap.createClient(url, (err, client) => {
@@ -65,7 +90,7 @@ soap.createClient(url, (err, client) => {
                 });
                 break;
 
-            case '2': // Javier (Pendiente)
+            case '2': // Editar (Pendiente)
                 console.log("Funcionalidad pendiente.");
                 preguntarOpcion();
                 break;
@@ -89,40 +114,30 @@ soap.createClient(url, (err, client) => {
                         case '1': // Ordenar alfabéticamente
                             client.OrdenarAlfabetico({}, (err, result) => {
                                 if (err) {
-                                    console.error("Error:", err.message);
+                                    console.error("Error al invocar OrdenarAlfabetico:", err.message || err);
                                 } else {
-                                    const contactos = JSON.parse(result.OrdenarAlfabeticoResult);
-                                    contactos.forEach(contacto => {
-                                        console.log(`Nombre: ${contacto.nombre}`);
-                                        console.log(`\tTeléfono: ${contacto.telefono}`);
-                                        console.log(`\tCelular: ${contacto.celular}`);
-                                        console.log(`\tCorreo: ${contacto.correo}`);
-                                    });
+                                    console.log(result.OrdenarAlfabeticoResult);
+                                    imprimirDirectorio();
                                 }
-                                preguntarOpcion();
+                                preguntarOpcion(); // Volver al menú tras completar la operación
                             });
                             break;
-            
+                
                         case '2': // Ordenar por correo
                             client.OrdenarAlfabeticoCorreo({}, (err, result) => {
                                 if (err) {
-                                    console.error("Error:", err.message);
+                                    console.error("Error al invocar OrdenarAlfabeticoCorreo:", err.message || err);
                                 } else {
-                                    const contactos = JSON.parse(result.OrdenarAlfabeticoCorreoResult);
-                                    contactos.forEach(contacto => {
-                                        console.log(`Nombre: ${contacto.nombre}`);
-                                        console.log(`\tTeléfono: ${contacto.telefono}`);
-                                        console.log(`\tCelular: ${contacto.celular}`);
-                                        console.log(`\tCorreo: ${contacto.correo}`);
-                                    });
+                                    console.log(result.OrdenarAlfabeticoCorreoResult);
+                                    imprimirDirectorio(); // Mostrar directorio ordenado
                                 }
-                                preguntarOpcion();
+                                preguntarOpcion(); // Volver al menú
                             });
                             break;
-            
+                
                         default:
                             console.log('Opción no válida.');
-                            preguntarOpcion();
+                            preguntarOpcion(); // Volver al menú para intentar de nuevo
                             break;
                     }
                 });

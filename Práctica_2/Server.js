@@ -1,3 +1,4 @@
+// Server.js - Modificado
 const soap = require('soap');
 const express = require('express');
 const fs = require('fs');
@@ -59,7 +60,6 @@ const service = {
             Eliminar: function (args, callback) {
                 const fileCSV = leerCSV();
                 const index = fileCSV.findIndex(row => row.nombre === args.nombre);
-
                 if (index !== -1) {
                     const eliminado = fileCSV.splice(index, 1);
                     escribirCSV(fileCSV);
@@ -68,18 +68,37 @@ const service = {
                     callback(null, { EliminarResult: `No se encontró ningún registro con el nombre: ${args.nombre}` });
                 }
             },
-            OrdenarAlfabetico: function(callback){
-                const data = leerCSV();
-                console.log("Datos leídos del CSV:", data);
-                data.sort((a, b) => a.nombre.localeCompare(b.nombre));
-                const result = { OrdenarAlfabeticoResult: JSON.stringify(data) };
-                console.log("Resultado devuelto:", result);
-                callback(null, result);               
+            OrdenarAlfabetico: function (args, callback) {
+                try {
+                    const data = leerCSV();            
+                    // Ordenar por nombre
+                    data.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            
+                    // Escribir los datos ordenados
+                    escribirCSV(data);
+            
+                    callback(null, { OrdenarAlfabeticoResult: 'El directorio ha sido ordenado alfabéticamente.' });
+                } catch (err) {
+                    callback(err);
+                }
             },
-            OrdenarAlfabeticoCorreo: function(callback){
-                const data = leerCSV();
-                data.sort((a, b) => a.correo.localeCompare(b.nombre));
-                callback(null, { OrdenarAlfabeticoResult: JSON.stringify(data) });  
+            OrdenarAlfabeticoCorreo: function (args, callback) {
+                try {
+                    let data = leerCSV();
+                    // Ordenar por el dominio del campo "correo"
+                    data.sort((a, b) => {
+                        // Extraer los dominios de los correos electrónicos
+                        const dominioA = a.correo ? a.correo.split('@')[1] || "" : "";
+                        const dominioB = b.correo ? b.correo.split('@')[1] || "" : "";
+                        // Comparar considerando valores nulos o faltantes
+                        return dominioA.localeCompare(dominioB);
+                    });
+                    // Escribir los datos ordenados
+                    escribirCSV(data);
+                    callback(null, { OrdenarAlfabeticoCorreoResult: 'El directorio ha sido ordenado por el dominio del correo alfabéticamente.' });
+                } catch (err) {
+                    callback(err);
+                }
             }
         }
     }
