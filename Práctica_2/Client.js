@@ -1,8 +1,9 @@
-// Client.js - Modificado
 const soap = require('soap');
 const readline = require('readline');
 
-const url = `http://localhost:3000/directorio?wsdl`;
+const IP="localhost";
+const PORT="3000";
+const url = `http://${IP}:${PORT}/directorio?wsdl`;
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -19,7 +20,7 @@ function showMenu() {
     console.log('0. Salir');
 }
 
-// Obtener datos del contacto
+// Obtener datos del contacto al agregar
 function getContactInputs(callback) {
     rl.question('Ingrese el nombre: ', (nombre) => {
         rl.question('Ingrese el teléfono: ', (telefono) => {
@@ -32,6 +33,7 @@ function getContactInputs(callback) {
     });
 }
 
+// Menu para ordenar el directorio
 function showOrderBy(callback) {
     console.log('1. Ordenar por orden alfabético');
     console.log('2. Ordenar por orden alfabético y por correo');
@@ -40,6 +42,7 @@ function showOrderBy(callback) {
     });
 }
 
+//Funcion para leer el directorio
 function leerCSV() {
     const fs = require('fs');
     const csvParse = require('csv-parse/sync');
@@ -53,6 +56,7 @@ function leerCSV() {
     }
 }
 
+//Funcion para imprimir el directorio
 function imprimirDirectorio() {
     const contactos = leerCSV(); // Ya es un arreglo de objetos
     contactos.forEach(contacto => {
@@ -60,6 +64,30 @@ function imprimirDirectorio() {
         console.log(`\tTeléfono: ${contacto.telefono}`);
         console.log(`\tCelular: ${contacto.celular}`);
         console.log(`\tCorreo: ${contacto.correo}`);
+    });
+}
+
+//Funcion para llamar a Servidor y ordenar por orden alfabetico
+function ordenarAlfabetico(){
+    client.OrdenarAlfabetico({}, (err, result) => {
+        if (err) {
+            console.error("Error al invocar OrdenarAlfabetico:", err.message || err);
+        } else {
+            console.log(result.OrdenarAlfabeticoResult);
+            imprimirDirectorio();
+        }
+    });
+}
+
+//Funcion para llamar a Servidor y ordenar por correo electronico y en orden alfabetico
+function ordenarAlfabeticoCorreo(){
+    client.OrdenarAlfabeticoCorreo({}, (err, result) => {
+        if (err) {
+            console.error("Error al invocar OrdenarAlfabeticoCorreo:", err.message || err);
+        } else {
+            console.log(result.OrdenarAlfabeticoCorreoResult);
+            imprimirDirectorio(); // Mostrar directorio ordenado
+        }
     });
 }
 
@@ -112,29 +140,13 @@ soap.createClient(url, (err, client) => {
                 showOrderBy((ordenamiento) => {
                     switch (ordenamiento) {
                         case '1': // Ordenar alfabéticamente
-                            client.OrdenarAlfabetico({}, (err, result) => {
-                                if (err) {
-                                    console.error("Error al invocar OrdenarAlfabetico:", err.message || err);
-                                } else {
-                                    console.log(result.OrdenarAlfabeticoResult);
-                                    imprimirDirectorio();
-                                }
-                                preguntarOpcion(); // Volver al menú tras completar la operación
-                            });
+                            ordenarAlfabetico();
+                            preguntarOpcion(); // Volver al menú tras completar la operación
                             break;
-                
-                        case '2': // Ordenar por correo
-                            client.OrdenarAlfabeticoCorreo({}, (err, result) => {
-                                if (err) {
-                                    console.error("Error al invocar OrdenarAlfabeticoCorreo:", err.message || err);
-                                } else {
-                                    console.log(result.OrdenarAlfabeticoCorreoResult);
-                                    imprimirDirectorio(); // Mostrar directorio ordenado
-                                }
-                                preguntarOpcion(); // Volver al menú
-                            });
+                        case '2': // Ordenar por dominio de correo
+                            ordenarAlfabeticoCorreo();
+                            preguntarOpcion(); // Volver al menú
                             break;
-                
                         default:
                             console.log('Opción no válida.');
                             preguntarOpcion(); // Volver al menú para intentar de nuevo
