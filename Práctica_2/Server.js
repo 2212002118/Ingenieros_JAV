@@ -83,7 +83,7 @@ const service = {
                     data.sort((a, b) => a.nombre.localeCompare(b.nombre));
                     // Escribir los datos ordenados
                     escribirCSV(data);
-                    callback(null, { OrdenarAlfabeticoResult: 'El directorio ha sido ordenado alfabéticamente.' });
+                    callback(null, { OrdenarAlfabeticoResult: data });
                 } catch (err) {
                     callback(err);
                 }
@@ -102,7 +102,7 @@ const service = {
                     });
                     // Escribir los datos ordenados
                     escribirCSV(data);
-                    callback(null, { OrdenarAlfabeticoCorreoResult: 'El directorio ha sido ordenado por el dominio del correo alfabéticamente.' });
+                    callback(null, { OrdenarAlfabeticoCorreoResult: data });
                 } catch (err) {
                     callback(err);
                 }

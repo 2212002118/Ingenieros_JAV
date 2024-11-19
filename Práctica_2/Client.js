@@ -41,23 +41,8 @@ function showOrderBy(callback) {
     });
 }
 
-//Funcion para leer el directorio
-function leerCSV() {
-    const fs = require('fs');
-    const csvParse = require('csv-parse/sync');
-
-    try {
-        const fileContent = fs.readFileSync('./directorio.csv', 'utf-8');
-        return csvParse.parse(fileContent, { columns: true });
-    } catch (err) {
-        console.error("Error al leer el CSV:", err);
-        return [];
-    }
-}
-
 //Funcion para imprimir el directorio
-function imprimirDirectorio() {
-    const contactos = leerCSV(); // Ya es un arreglo de objetos
+function imprimirDirectorio(contactos) {
     contactos.forEach(contacto => {
         console.log(`Nombre: ${contacto.nombre}`);
         console.log(`\tTeléfono: ${contacto.telefono}`);
@@ -72,8 +57,7 @@ function ordenarAlfabetico(client){
         if (err) {
             console.error("Error al invocar OrdenarAlfabetico:", err.message || err);
         } else {
-            console.log(result.OrdenarAlfabeticoResult);
-            imprimirDirectorio();
+            imprimirDirectorio(result.OrdenarAlfabeticoResult);
             showMenu();
             return;
         }
@@ -86,8 +70,7 @@ function ordenarAlfabeticoCorreo(client){
         if (err) {
             console.error("Error al invocar OrdenarAlfabeticoCorreo:", err.message || err);
         } else {
-            console.log(result.OrdenarAlfabeticoCorreoResult);
-            imprimirDirectorio(); // Mostrar directorio ordenado
+            imprimirDirectorio(result.OrdenarAlfabeticoCorreoResult);
             showMenu();
             return;
         }
