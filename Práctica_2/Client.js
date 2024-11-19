@@ -19,6 +19,19 @@ function showMenu() {
     console.log('0. Salir');
 }
 
+// Menu para editar un contacto
+function showEditMenu(callback) {
+    console.log('¿Qué desea editar?');
+    console.log('1. Nombre');
+    console.log('2. Teléfono');
+    console.log('3. Celular');
+    console.log('4. Correo');
+    console.log('0. Cancelar');
+    rl.question('Seleccionar una opción: ', (opcion) => {
+        callback(opcion);
+    });
+}
+
 // Obtener datos del contacto al agregar
 function getContactInputs(callback) {
     rl.question('Ingrese el nombre: ', (nombre) => {
@@ -105,8 +118,79 @@ soap.createClient(url, (err, client) => {
                 break;
 
             case '2': // Editar (Pendiente)
-                console.log("Funcionalidad pendiente.");
-                preguntarOpcion();
+            rl.question('Ingrese el nombre del contacto a editar: ', (nombre) => {
+                showEditMenu((editOption) => {
+                    let updatedFields = { nombre }; // Inicialmente solo el nombre
+
+                    switch (editOption) {
+                        case '1':
+                            rl.question('Ingrese el nuevo nombre: ', (nuevoNombre) => {
+                                updatedFields.nuevoNombre = nuevoNombre;
+                                client.Editar(updatedFields, (err, result) => {
+                                    if (err) {
+                                        console.error("Error:", err);
+                                    } else {
+                                        console.log(result.EditarResult);
+                                    }
+                                    preguntarOpcion();
+                                });
+                            });
+                            break;
+
+                        case '2':
+                            rl.question('Ingrese el nuevo teléfono: ', (telefono) => {
+                                updatedFields.telefono = telefono;
+                                client.Editar(updatedFields, (err, result) => {
+                                    if (err) {
+                                        console.error("Error:", err);
+                                    } else {
+                                        console.log(result.EditarResult);
+                                    }
+                                    preguntarOpcion();
+                                });
+                            });
+                            break;
+
+                        case '3':
+                            rl.question('Ingrese el nuevo celular: ', (celular) => {
+                                updatedFields.celular = celular;
+                                client.Editar(updatedFields, (err, result) => {
+                                    if (err) {
+                                        console.error("Error:", err);
+                                    } else {
+                                        console.log(result.EditarResult);
+                                    }
+                                    preguntarOpcion();
+                                });
+                            });
+                            break;
+
+                        case '4':
+                            rl.question('Ingrese el nuevo correo: ', (correo) => {
+                                updatedFields.correo = correo;
+                                client.Editar(updatedFields, (err, result) => {
+                                    if (err) {
+                                        console.error("Error:", err);
+                                    } else {
+                                        console.log(result.EditarResult);
+                                    }
+                                    preguntarOpcion();
+                                });
+                            });
+                            break;
+
+                        case '0':
+                            console.log('Edición cancelada.');
+                            preguntarOpcion();
+                            break;
+
+                        default:
+                            console.log('Opción no válida.');
+                            preguntarOpcion();
+                            break;
+                    }
+                });
+            });
                 break;
 
             case '3': // Eliminar

@@ -76,6 +76,27 @@
                     </xsd:sequence>
                 </xsd:complexType>
             </xsd:element>
+
+            <xsd:element name="Editar">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="nombre" type="xsd:string"/>
+                        <xsd:element name="nuevoNombre" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="telefono" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="celular" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="correo" type="xsd:string" minOccurs="0"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="EditarResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="EditarResult" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
         </xsd:schema>
     </types>
 
@@ -114,6 +135,13 @@
         <part name="parameters" element="tns:OrdenarAlfabeticoCorreoResponse"/>
     </message>
 
+    <message name="EditarRequest">
+        <part name="parameters" element="tns:Editar"/>
+    </message>
+    <message name="EditarResponse">
+        <part name="parameters" element="tns:EditarResponse"/>
+    </message>
+
     <portType name="DirectorioPortType">
         <operation name="Añadir">
             <input message="tns:AñadirRequest"/>
@@ -138,6 +166,11 @@
         <operation name="OrdenarAlfabeticoCorreo">
             <input message="tns:OrdenarAlfabeticoCorreoRequest"/>
             <output message="tns:OrdenarAlfabeticoCorreoResponse"/>
+        </operation>
+
+        <operation name="Editar">
+            <input message="tns:EditarRequest"/>
+            <output message="tns:EditarResponse"/>
         </operation>
     </portType>
 
@@ -185,6 +218,16 @@
 
         <operation name="OrdenarAlfabeticoCorreo">
             <soap:operation soapAction="http://localhost:3000/directorio/OrdenarAlfabeticoCorreo"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+
+        <operation name="Editar">
+            <soap:operation soapAction="http://localhost:3000/directorio/Editar"/>
             <input>
                 <soap:body use="literal"/>
             </input>

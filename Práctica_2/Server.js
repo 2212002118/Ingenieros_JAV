@@ -106,7 +106,23 @@ const service = {
                 } catch (err) {
                     callback(err);
                 }
-            }
+            },
+            Editar: function (args, callback) {
+                const fileCSV = leerCSV();
+                const index = fileCSV.findIndex(row => row.nombre === args.nombre);
+                if (index !== -1) {
+                    // Actualizar los datos del contacto
+                    if (args.nuevoNombre) fileCSV[index].nombre = args.nuevoNombre;
+                    if (args.telefono) fileCSV[index].telefono = args.telefono;
+                    if (args.celular) fileCSV[index].celular = args.celular;
+                    if (args.correo) fileCSV[index].correo = args.correo;
+
+                    escribirCSV(fileCSV);
+                    callback(null, { EditarResult: `Se actualizó el contacto: ${args.nombre}` });
+                } else {
+                    callback(null, { EditarResult: `No se encontró ningún registro con el nombre: ${args.nombre}` });
+                }
+            },
         }
     }
 };
