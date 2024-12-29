@@ -1,0 +1,42 @@
+[
+  {
+      "idDoctor": "1",
+      "nombre": "María López Hernández",
+      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+  },
+  {
+      "idDoctor": "2",
+      "nombre": "Juan Pérez Martínez",
+      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+  },
+  {
+      "idDoctor": "3",
+      "nombre": "Ana Sánchez Morales",
+      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+  },
+  {
+      "idDoctor": "4",
+      "nombre": "Gabriela Ramírez Ortiz",
+      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+  },
+  {
+      "idDoctor": "5",
+      "nombre": "Patricia Castro Vargas",
+      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+  },
+  {
+      "idDoctor": "6",
+      "nombre": "Carlos Gómez Rodríguez",
+      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+  },
+  {
+      "idDoctor": "7",
+      "nombre": "Luis Fernández Torres",
+      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+  },
+  {
+      "idDoctor": "8",
+      "nombre": "Javier Mendoza García",
+      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+  }
+]
