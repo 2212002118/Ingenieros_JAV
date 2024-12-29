@@ -1,31 +1,60 @@
-# Proyecto: Sistema de Gestión de Citas Médicas
+# Sistema de Gestión de Citas Médicas
 
-Este repositorio contiene un sistema básico de gestión de citas médicas. Incluye un cliente con HTML, CSS y JavaScript, y un servidor backend desarrollado con Node.js y Express. El sistema permite gestionar usuarios, doctores, especialidades médicas y citas.
+Este proyecto es un sistema completo para la gestión de citas médicas. Incluye un cliente desarrollado en HTML, CSS y JavaScript, y un servidor backend construido con Node.js y Express. El objetivo es proporcionar una plataforma sencilla pero funcional para la administración de usuarios, doctores, especialidades médicas y citas.
 
 ---
 
 ## Tabla de Contenidos
 
-1. [Requisitos Previos](#requisitos-previos)
-2. [Estructura del Proyecto](#estructura-del-proyecto)
-3. [Dependencias y Configuración](#dependencias-y-configuración)
-   - [Backend](#backend)
-   - [Cliente](#cliente)
-4. [Cómo Ejecutar el Proyecto](#cómo-ejecutar-el-proyecto)
-5. [Contribuciones](#contribuciones)
-6. [Licencia](#licencia)
+1. [📖 Descripción del Proyecto](#descripción-del-proyecto)
+2. [✨ Características Principales](#características-principales)
+3. [⚙️ Requisitos Previos](#requisitos-previos)
+4. [📂 Estructura del Proyecto](#estructura-del-proyecto)
+5. [🚀 Guía de Instalación y Uso](#guía-de-instalación-y-uso)
+6. [🛠️ Tecnologías Utilizadas](#tecnologías-utilizadas)
+7. [📜 Licencia](#licencia)
 
 ---
 
-## Requisitos Previos
+## 📖 Descripción del Proyecto
 
-- **Node.js** y **npm** deben estar instalados en tu sistema.
-- Asegúrate de tener la estructura de carpetas como se describe más abajo.
-- Instala las dependencias necesarias para el backend y el cliente.
+Este sistema permite:
+
+- 🧑‍💻 Gestionar usuarios mediante login y registro.
+- 🩺 Listar doctores con imágenes y especialidades.
+- 📅 Consultar y administrar citas médicas.
+- 🗺️ Integración con herramientas externas como MapLibre para mapas y EmailJS para envío de correos.
+
+Es ideal para pequeñas clínicas o centros médicos que deseen gestionar sus operaciones de manera eficiente.
 
 ---
 
-## Estructura del Proyecto
+## ✨ Características Principales
+
+### Cliente
+- 🎨 **Interfaz intuitiva**: HTML, CSS y JavaScript con diseño responsivo.
+- 🔐 **Gestión de usuarios**: Formulario de inicio de sesión y registro.
+- 👩‍⚕️ **Visualización interactiva**: Listado dinámico de doctores y especialidades.
+- 🌍 **Mapas interactivos**: Implementación con MapLibre.
+- ✉️ **Envío de correos**: Configurado con EmailJS para contacto directo.
+
+### Servidor
+- 🖥️ **Backend robusto**: Construido con Node.js y Express.
+- 🌐 **Endpoints REST**: Para usuarios, doctores y citas.
+- 🔑 **Autenticación básica**: Login y registro de usuarios.
+- 📂 **Gestión de datos**: Archivos JSON como base de datos local.
+
+---
+
+## ⚙️ Requisitos Previos
+
+- 🟢 **Node.js** (versión 14 o superior).
+- 📦 **npm** (gestor de paquetes de Node.js).
+- 🌐 Navegador web actualizado.
+
+---
+
+## 📂 Estructura del Proyecto
 
 ```
 Proyecto/
@@ -53,89 +82,49 @@ Proyecto/
 
 ---
 
-## Dependencias y Configuración
+## 🚀 Guía de Instalación y Uso
 
 ### Backend
 
-1. **Instalar dependencias del servidor**:
+1. **Configura el servidor**:
    ```bash
    cd Servidor
-   npm install express cors dotenv nodemailer axios
+   npm install
    ```
 
-2. **Archivo `.env`**:
-   Crea un archivo `.env` en la carpeta `Servidor` con las siguientes variables (opcional):
-   ```
-   HOST=127.0.0.1
-   PORT=3000
-   ```
-
-3. **Iniciar el servidor**:
+3. **Inicia el servidor**:
    ```bash
    npm start
    ```
 
----
-
 ### Cliente
 
-El cliente utiliza las siguientes bibliotecas externas:
+1. Abre los archivos HTML directamente en el navegador o utiliza un servidor estático como [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
-1. **MapLibre** para mapas:
-   - Añade el siguiente enlace al archivo HTML:
-     ```html
-     <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet">
-     <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
-     <script src="mapkick.js"></script>
-     ```
+### Navegación
 
-2. **EmailJS** para envío de correos:
-   - Añade los siguientes scripts en los archivos HTML que requieran enviar correos:
-     ```html
-     <script src="https://smtpjs.com/v3/smtp.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-     ```
-   - Inicializa EmailJS en tu JavaScript:
-     ```javascript
-     emailjs.init('tu_ID_de_usuario'); // Reemplazar con tu ID de usuario
-     ```
-
-3. **Font Awesome** para iconos:
-   - Añade el siguiente enlace en los archivos HTML para usar iconos:
-     ```html
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-     ```
+1. Accede al cliente en la raíz del proyecto (`inicio.html`).
+2. El servidor estará disponible en `http://127.0.0.1:3000` por defecto.
 
 ---
 
-## Cómo Ejecutar el Proyecto
+## 🛠️ Tecnologías Utilizadas
 
-1. **Backend**:
-   - Navega a la carpeta del servidor:
-     ```bash
-     cd Servidor
-     ```
-   - Instala las dependencias:
-     ```bash
-     npm install
-     ```
-   - Inicia el servidor:
-     ```bash
-     npm start
-     ```
+### Cliente
+- 🌐 **HTML/CSS/JavaScript**: Estructura, diseño y funcionalidad.
+- 🗺️ **MapLibre**: Integración de mapas interactivos.
+- ✉️ **EmailJS**: Gestión de correos electrónicos.
+- 🎨 **Font Awesome**: Iconos visuales.
 
-2. **Frontend**:
-   - Abre los archivos HTML directamente en un navegador o sirve el cliente mediante un servidor estático.
+### Servidor
+- 🟢 **Node.js**: Entorno de ejecución.
+- ⚙️ **Express**: Framework para desarrollo web.
+- 📂 **JSON**: Almacenamiento de datos.
+- 🔒 **dotenv**: Gestión de variables de entorno.
+- 🌐 **CORS**: Configuración de acceso entre dominios.
 
 ---
 
-## Contribuciones
+## 📜 Licencia
 
-¡Las contribuciones son bienvenidas! Por favor, abre un **issue** o un **pull request** con tus sugerencias.
-
----
-
-## Licencia
-
-Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más información.
-```
+Este proyecto está licenciado bajo la [MIT License](LICENSE). Siéntete libre de usarlo y modificarlo según tus necesidades.
