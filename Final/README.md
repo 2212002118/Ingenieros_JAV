@@ -30,21 +30,18 @@ Este repositorio contiene un sistema básico de gestión de citas médicas. Incl
 ```
 Proyecto/
 ├── Cliente/
-│   ├── css/
-│   │   ├── contactanos.css
-│   │   ├── doctores.css
-│   │   ├── inicio.css
-│   │   ├── login.css
-│   ├── js/
-│   │   ├── contactanos.js
-│   │   ├── doctores.js
-│   │   ├── inicio.js
-│   │   ├── login.js
-│   ├── html/
-│   │   ├── contactanos.html
-│   │   ├── doctores.html
-│   │   ├── inicio.html
-│   │   ├── login.html
+│   ├── contactanos.css
+│   ├── doctores.css
+│   ├── inicio.css
+│   ├── login.css
+│   ├── contactanos.js
+│   ├── doctores.js
+│   ├── inicio.js
+│   ├── login.js
+│   ├── contactanos.html
+│   ├── doctores.html
+│   ├── inicio.html
+│   ├── login.html
 ├── Servidor/
 │   ├── server.js
 │   ├── package.json
