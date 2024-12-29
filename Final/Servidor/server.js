@@ -7,6 +7,16 @@ require('dotenv').config(); // Manejar variables de entorno
 
 const app = express();
 
+const cors = require('cors'); // Importar el paquete
+
+// Configurar CORS
+app.use(cors({
+    origin: 'http://127.0.0.1:3000', // Cambia esto al origen donde está tu cliente
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+    allowedHeaders: ['Content-Type'], // Encabezados permitidos
+}));
+
+
 // Configuración de host y puerto
 const HOST = process.env.HOST || '127.0.0.1';
 const PORT = process.env.PORT || 3000;
@@ -81,6 +91,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../Cliente', 'inicio.html'));
 });
 
+/******************************
+ * INICIO - Contactanos 
+ *****************************/
+// No se puede en backend 
+
+/******************************
+ * FIN - Contactanos 
+ *****************************/
 
 // Crear el servidor HTTP para integrar ambos servicios
 const server = http.createServer(app);

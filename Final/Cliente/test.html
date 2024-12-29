@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba EmailJS</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        emailjs.init('x2vvcMidNsRBgrVr0'); // Reemplaza con tu clave pública
+    </script>
+</head>
+<body>
+    <script>
+        // Prueba de envío
+        emailjs.send('default_service', 'template_z1po6kp', {
+            nombre: 'Juan Pérez',
+            correo: 'juan.perez@example.com',
+            mensaje: 'Este es un mensaje de prueba enviado desde un archivo HTML.'
+        }).then(function(response) {
+            console.log('Correo enviado con éxito!', response.status, response.text);
+        }).catch(function(error) {
+            console.error('Error al enviar el correo:', error);
+        });
+    </script>
+</body>
+</html>

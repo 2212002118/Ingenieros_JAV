@@ -1,39 +1,195 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #e8f5e9; /* Verde claro para el fondo general */
+    color: #2e7d32; /* Verde oscuro para el texto */
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el cuerpo llene toda la altura de la ventana */
 }
+
+header {
+    background-color: #004d40; /* Dark green */
+    color: white;
+    padding: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: #a5d6a7; /* Light green */
+}
+
+/* User Greeting and Logout */
+.user-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#logoutButton {
+    background-color: #00796b; /* Teal green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#logoutButton:hover {
+    background-color: #004d40; /* Darker green */
+}
+
+/* Contenedor principal */
 .container {
+    flex: 1; /* Permite que este contenedor crezca y empuje el footer hacia abajo */
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
+
+/* Título */
 .titulo {
-    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
     margin-bottom: 20px;
+    text-align: left;
+    width: fit-content;
+    margin-left: 0; /* Alinea al inicio del contenedor */
+    border-left: 5px solid #1b5e20; /* Verde intenso */
+    padding-left: 10px;
+    color: #1b5e20; /* Verde intenso para el texto del título */
 }
+
+/* Contenedor de doctores */
 .doctores {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: start; /* Alinea doctores al inicio */
     gap: 20px;
-    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
+
+/* Cada doctor */
 .doctor {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
+    background-color: #c8e6c9; /* Verde muy claro */
     padding: 15px;
+    border-radius: 10px;
     width: 200px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
 }
+
+/* Imagen circular */
 .doctor img {
-    border-radius: 50%;
     width: 100px;
     height: 100px;
+    border-radius: 50%;
     object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #2e7d32; /* Verde oscuro */
 }
+
+/* Nombre del doctor */
 .doctor h3 {
-    margin: 10px 0 5px;
-    font-size: 1.2em;
+    font-size: 18px;
+    margin: 5px 0;
+    color: #2e7d32; /* Verde oscuro para el nombre */
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .doctores {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .doctor {
+        width: 90%;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: #004d40; /* Dark green */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.address, .company, .social-media {
+    margin-bottom: 20px;
+    flex: 1 1 30%;
+}
+
+.icons span {
+    margin-right: 10px;
+}
+
+.icons a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.icons a:hover {
+    color: #a5d6a7; /* Light green */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
 }

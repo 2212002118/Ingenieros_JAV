@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contáctanos</title>
+    <link rel="stylesheet" href="contactanos.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+
+<header>
+    <div class="header-container">
+        <div class="logo"><img src="Imagenes/logo.jpg"></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="inicio.html">Inicio</a></li>
+                <li><a href="#">Consulta tu Cita (Pacientes CRUD)</a></li>
+                <li><a href="doctores.html">Nuestro equipo médico</a></li>
+                <li><a href="#">Consulta tu Historial Médico (CRUD)</a></li>
+            </ul>
+        </nav>
+        <!-- Contenedor de usuario y botón de cierre de sesión -->
+        <div class="user-container">
+            <div id="userGreeting">Hola, Usuario</div>
+            <button id="logoutButton">Cerrar Sesión</button>
+        </div>
+    </div>
+</header>
+
+<body>
+    <h1>Contáctanos</h1>
+    <form id="form">
+        <div class="field">
+          <label for="nombre">nombre</label>
+          <input type="text" name="nombre" id="nombre">
+        </div>
+        <div class="field">
+          <label for="correo">correo</label>
+          <input type="text" name="correo" id="correo">
+        </div>
+        <div class="field">
+          <label for="mensaje">mensaje</label>
+          <input type="text" name="mensaje" id="mensaje">
+        </div>
+        <input type="submit" id="button" value="Send Email" >
+      </form>
+      
+      <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+      
+      <script type="text/javascript">
+        emailjs.init('x2vvcMidNsRBgrVr0')
+      </script>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="address">
+                <p>Dirección: Av San Pablo Xalpa 180, San Martin Xochinahuac, Azcapotzalco, 02128 Ciudad de México, CDMX</p>
+            </div>
+            <div class="company">
+                <p>Ingenieros JAV S.A C.V</p>
+                <!--Los catalogos como lo definimos?-->
+                <p>Consulta nuestro catálogo de precios</p>
+            </div>
+            <div class="social-media">
+                <p>Síguenos en nuestras redes sociales</p>
+                <div class="icons">
+                    <span>
+                        <a href="https://www.facebook.com/CBI.UAM.Azcapotzalco/?locale=es_LA" target="_blank">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </a>
+                    </span>
+                    <span>
+                        <a href="https://x.com/UAMAzcOficial" target="_blank">
+                            <i class="fab fa-x-twitter"></i> Twitter
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="contactanos.js"></script>
+</body>
+</html>

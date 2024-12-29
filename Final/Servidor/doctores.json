@@ -2,41 +2,41 @@
   {
       "idDoctor": "1",
       "nombre": "María López Hernández",
-      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+      "imagen": "https://raw.githubusercontent.com/2212002118/Ingenieros_JAV/main/Final/Servidor/Imagenes/Doctores/doctor1.jpg"
   },
   {
       "idDoctor": "2",
       "nombre": "Juan Pérez Martínez",
-      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+      "imagen": "https://raw.githubusercontent.com/2212002118/Ingenieros_JAV/main/Final/Servidor/Imagenes/Doctores/doctor2.jpg"
   },
   {
       "idDoctor": "3",
       "nombre": "Ana Sánchez Morales",
-      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+      "imagen": "https://raw.githubusercontent.com/2212002118/Ingenieros_JAV/main/Final/Servidor/Imagenes/Doctores/doctor3.jpg"
   },
   {
       "idDoctor": "4",
       "nombre": "Gabriela Ramírez Ortiz",
-      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+      "imagen": "https://raw.githubusercontent.com/2212002118/Ingenieros_JAV/main/Final/Servidor/Imagenes/Doctores/doctor4.jpg"
   },
   {
       "idDoctor": "5",
       "nombre": "Patricia Castro Vargas",
-      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+      "imagen": "https://raw.githubusercontent.com/2212002118/Ingenieros_JAV/main/Final/Servidor/Imagenes/Doctores/doctor5.jpg"
   },
   {
       "idDoctor": "6",
       "nombre": "Carlos Gómez Rodríguez",
-      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+      "imagen": "https://raw.githubusercontent.com/2212002118/Ingenieros_JAV/main/Final/Servidor/Imagenes/Doctores/doctor6.jpg"
   },
   {
       "idDoctor": "7",
       "nombre": "Luis Fernández Torres",
-      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+      "imagen": "https://raw.githubusercontent.com/2212002118/Ingenieros_JAV/main/Final/Servidor/Imagenes/Doctores/doctor7.jpg"
   },
   {
       "idDoctor": "8",
       "nombre": "Javier Mendoza García",
-      "imagen": "https://this-person-does-not-exist.com/es/download-page?image=genb1e3f582f41dc8abf9480d16e71f6a65"
+      "imagen": "https://raw.githubusercontent.com/2212002118/Ingenieros_JAV/main/Final/Servidor/Imagenes/Doctores/doctor8.jpg"
   }
 ]
