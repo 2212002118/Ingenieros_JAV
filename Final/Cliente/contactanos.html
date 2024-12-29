@@ -6,6 +6,14 @@
     <title>Contáctanos</title>
     <link rel="stylesheet" href="contactanos.css">
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <script src="mapkick.js"></script>
+    <script>
+        Mapkick.options = {style: "https://demotiles.maplibre.org/style.json"}
+    </script>
 </head>
 
 <header>
@@ -17,6 +25,7 @@
                 <li><a href="#">Consulta tu Cita (Pacientes CRUD)</a></li>
                 <li><a href="doctores.html">Nuestro equipo médico</a></li>
                 <li><a href="#">Consulta tu Historial Médico (CRUD)</a></li>
+                <li><a href="contactanos.html">Contáctanos</a></li>
             </ul>
         </nav>
         <!-- Contenedor de usuario y botón de cierre de sesión -->
@@ -28,30 +37,36 @@
 </header>
 
 <body>
+
+    <h1>Dirección</h1>
+    <div id="map" style="height: 400px;"></div>
+
+    <script>
+        new Mapkick.Map("map", [{latitude: 19.5033613, longitude: -99.1870307}])
+    </script>
+
+
+
     <h1>Contáctanos</h1>
     <form id="form">
         <div class="field">
-          <label for="nombre">nombre</label>
-          <input type="text" name="nombre" id="nombre">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Escribe tu nombre" required>
         </div>
         <div class="field">
-          <label for="correo">correo</label>
-          <input type="text" name="correo" id="correo">
+            <label for="correo">Correo</label>
+            <input type="email" name="correo" id="correo" placeholder="Escribe tu correo electrónico" required>
         </div>
         <div class="field">
-          <label for="mensaje">mensaje</label>
-          <input type="text" name="mensaje" id="mensaje">
+            <label for="mensaje">Mensaje</label>
+            <textarea name="mensaje" id="mensaje" rows="4" placeholder="Escribe tu mensaje" required></textarea>
         </div>
-        <input type="submit" id="button" value="Send Email" >
-      </form>
-      
-      <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-      
-      <script type="text/javascript">
-        emailjs.init('x2vvcMidNsRBgrVr0')
-      </script>
+        <input type="submit" id="button" value="Enviar Mensaje">
+    </form>
     
+    <script src="contactanos.js"></script>
+
+    <!--No cambiar lo de abajo-->
     <footer>
         <div class="footer-container">
             <div class="address">
@@ -79,6 +94,5 @@
             </div>
         </div>
     </footer>
-    <script src="contactanos.js"></script>
 </body>
 </html>

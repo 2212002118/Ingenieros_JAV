@@ -1,18 +1,13 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    background-color: #f5f9f6; /* Soft green background */
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Asegura que el cuerpo ocupe toda la altura de la ventana */
+    min-height: 100vh; /* Asegura que el cuerpo tenga al menos el alto de la ventana */
+    margin: 0;
 }
 
 main {
-    flex: 1; /* Permite que este contenedor crezca y empuje el footer hacia abajo */
-    padding: 40px 20px;
+    flex: 1; /* Hace que este contenedor crezca para empujar el footer hacia abajo */
 }
 
 /* Header Styles */
@@ -104,12 +99,76 @@ nav ul {
     line-height: 1.6;
 }
 
+/* Estilos para el formulario */
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form h1 {
+    text-align: center;
+    color: #2e7d32; /* Verde bosque */
+    margin-bottom: 20px;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #004d40; /* Verde oscuro */
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.field input[type="text"]:focus,
+.field input[type="email"]:focus,
+.field textarea:focus {
+    border-color: #2e7d32; /* Verde bosque */
+    outline: none;
+}
+
+#button {
+    background-color: #00796b; /* Verde teal */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+#button:hover {
+    background-color: #004d40; /* Verde más oscuro */
+}
+
+
+
 /* Footer Styles */
 footer {
-    background-color: #004d40; /* Dark green */
+    background-color: #004d40; /* Verde oscuro */
     color: white;
-    padding: 20px 0;
     text-align: center;
+    padding: 20px 0;
 }
 
 .footer-container {
