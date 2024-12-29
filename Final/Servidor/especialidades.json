@@ -1,0 +1,35 @@
+[
+    {
+      "idEspecialidad": "A",
+      "nombre": "Medicina Interna"
+    },
+    {
+      "idEspecialidad": "B",
+      "nombre": "Medicina Familiar"
+    },
+    {
+      "idEspecialidad": "C",
+      "nombre": "Pediatría"
+    },
+    {
+      "idEspecialidad": "D",
+      "nombre": "Geriatría"
+    },
+    {
+      "idEspecialidad": "E",
+      "nombre": "Medicina Preventiva"
+    },
+    {
+      "idEspecialidad": "F",
+      "nombre": "Urgencias Médicas"
+    },
+    {
+      "idEspecialidad": "G",
+      "nombre": "Imagenología (Radiología, Tomografía, Resonancia Magnética)"
+    },
+    {
+      "idEspecialidad": "H",
+      "nombre": "Laboratorio Clínico"
+    }
+  ]
+  

@@ -1,0 +1,93 @@
+[
+    {
+      "id": "1",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "8:00",
+      "idEspecialidad": "A",
+      "consultorio": "01",
+      "idDoctor": "1"
+    },
+    {
+      "id": "2",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "8:45",
+      "idEspecialidad": "B",
+      "consultorio": "02",
+      "idDoctor": "2"
+    },
+    {
+      "id": "3",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "9:30",
+      "idEspecialidad": "C",
+      "consultorio": "03",
+      "idDoctor": "3"
+    },
+    {
+      "id": "4",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "10:15",
+      "idEspecialidad": "D",
+      "consultorio": "04",
+      "idDoctor": "4"
+    },
+    {
+      "id": "5",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "11:00",
+      "idEspecialidad": "E",
+      "consultorio": "05",
+      "idDoctor": "5"
+    },
+    {
+      "id": "6",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "11:45",
+      "idEspecialidad": "F",
+      "consultorio": "06",
+      "idDoctor": "6"
+    },
+    {
+      "id": "7",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "12:30",
+      "idEspecialidad": "G",
+      "consultorio": "07",
+      "idDoctor": "7"
+    },
+    {
+      "id": "8",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "13:15",
+      "idEspecialidad": "H",
+      "consultorio": "08",
+      "idDoctor": "8"
+    },
+    {
+      "id": "9",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "14:00",
+      "idEspecialidad": "A",
+      "consultorio": "01",
+      "idDoctor": "1"
+    },
+    {
+      "id": "10",
+      "username": "admin",
+      "fecha": "19/12/2024",
+      "hora": "14:45",
+      "idEspecialidad": "C",
+      "consultorio": "03",
+      "idDoctor": "3"
+    }
+  ]
+  

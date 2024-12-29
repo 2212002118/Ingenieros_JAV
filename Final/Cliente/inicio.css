@@ -1,0 +1,158 @@
+/* inicio.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f5f9f6; /* Soft green background */
+}
+
+/* Header Styles */
+header {
+    background-color: #004d40; /* Dark green */
+    color: white;
+    padding: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: #a5d6a7; /* Light green */
+}
+
+/* User Greeting and Logout */
+.user-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#logoutButton {
+    background-color: #00796b; /* Teal green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#logoutButton:hover {
+    background-color: #004d40; /* Darker green */
+}
+
+/* Main Styles */
+main {
+    padding: 40px 20px;
+}
+
+.image-gallery {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.image-gallery div img {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-us, .additional-info {
+    background-color: #e8f5e9; /* Soft green section background */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.about-us h2, .why-us h2 {
+    color: #2e7d32; /* Forest green */
+}
+
+.about-us p, .why-us p {
+    line-height: 1.6;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #004d40; /* Dark green */
+    color: white;
+    padding: 20px 0;
+}
+
+.footer-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.address, .company, .social-media {
+    margin-bottom: 20px;
+    flex: 1 1 30%;
+}
+
+.icons span {
+    margin-right: 10px;
+}
+
+.icons a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.icons a:hover {
+    color: #a5d6a7; /* Light green */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}

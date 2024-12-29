@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login y Registro</title>
     <link rel="stylesheet" href="login.css">
-    <script src="client.js"></script>
+    <script src="login.js"></script>
 </head>
+
 <body>
     <div class="login-container">
         <div class="toggle-buttons">
@@ -21,7 +23,9 @@
                 <input type="text" id="username" name="username" required>
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" name="password" required>
-                <button type="submit" onclick="event.preventDefault(); iniciarSesion(document.getElementById('username').value, document.getElementById('password').value)">Iniciar Sesión</button>
+                <button type="submit"
+                    onclick="event.preventDefault(); iniciarSesion(document.getElementById('username').value, document.getElementById('password').value)">Iniciar
+                    Sesión</button>
             </form>
             <p id="loginMessage"></p>
         </div>
@@ -33,7 +37,8 @@
                 <input type="text" id="newUsername" name="newUsername" required>
                 <label for="newPassword">Contraseña:</label>
                 <input type="password" id="newPassword" name="newPassword" required>
-                <button type="submit" onclick="event.preventDefault(); agregarUsuario(document.getElementById('newUsername').value, document.getElementById('newPassword').value)">Registrar</button>
+                <button type="submit"
+                    onclick="event.preventDefault(); agregarUsuario(document.getElementById('newUsername').value, document.getElementById('newPassword').value)">Registrar</button>
             </form>
             <p id="registerMessage"></p>
         </div>
@@ -57,4 +62,5 @@
         });
     </script>
 </body>
+
 </html>
