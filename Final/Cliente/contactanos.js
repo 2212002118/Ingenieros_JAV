@@ -29,6 +29,7 @@ function enviarCorreo(nombre, correo, mensaje) {
         mensaje: mensaje
     }).then(function(response) {
         alert('Correo enviado con éxito!');
+        window.location.href = 'contactanos.html';
     }).catch(function(error) {
         alert('Error al enviar el correo: ' + JSON.stringify(error));
     });
